@@ -1,0 +1,41 @@
+.ShoppingCart {
+  &__container {
+    &--products {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      justify-items: center;
+      gap: 10px;
+    }
+    &--radios {
+      width: 200px;
+    }
+  }
+  &__container {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__radios {
+    margin-bottom: 20px;
+  }
+  &__search {
+    border-radius: 20px;
+    margin-top: 20px;
+    width: 400px;
+  }
+  &__titleProductos {
+    border-bottom: 1px solid var(--fourth);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+  }
+  &__titleCategorias {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--fourth);
+  }
+  &__titleSearch {
+    display: flex;
+    align-items: center;
+    color: var(--secondary);
+  }
+}

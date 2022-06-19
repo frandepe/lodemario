@@ -1,0 +1,80 @@
+.ComoComprar {
+  &__container {
+    text-align: center;
+    color: white;
+    border: none;
+  }
+  &__container img {
+    height: 250px;
+    object-fit: cover;
+    filter: blur(4px) brightness(78%) opacity(95%);
+    -webkit-filter: blur(4px) brightness(78%) opacity(95%);
+    -moz-filter: blur(4px) brightness(78%) opacity(95%);
+  }
+  &__container p {
+    font-size: 1.2em;
+    color: var(--fourth);
+  }
+  &__textBanner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  &__descripcion {
+    text-align: center;
+    margin-top: 50px;
+    border-bottom: 1px solid var(--fourth);
+  }
+  &__flexIcons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__icons {
+    border-bottom: 1px solid var(--fourth);
+    margin-top: 40px;
+    padding-bottom: 40px;
+    text-align: center;
+  }
+  &__icons p,
+  &__icons b {
+    font-size: 1.1em;
+    margin-top: 8px;
+  }
+  &__icon {
+    font-size: 5em;
+    color: white;
+  }
+  &__iconContainer {
+    background-color: var(--secondary);
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__iconContainer span {
+    position: absolute;
+    -webkit-transform: translate(-60px, -40px);
+    -moz-transform: translate(-60px, -40px);
+    transform: translate(-60px, -40px);
+    background-color: var(--black);
+    color: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.7em;
+  }
+  &__faq {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+  &__faq h3 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+}

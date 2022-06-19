@@ -1,0 +1,49 @@
+.NavbarComp {
+  &__links a {
+    display: block;
+    height: 100%;
+    margin-right: 10px;
+    position: relative;
+  }
+  &__links a:after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    display: block;
+    transition: all 0.3s ease;
+    bottom: 8%;
+  }
+  &__links a:hover::after {
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary);
+  }
+  &__cart {
+    &--container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &--length {
+      border-radius: 50%;
+      background-color: var(--primary);
+      width: 24px;
+      height: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      -webkit-transform: translate(-4px, -2px);
+      -moz-transform: translate(-4px, -2px);
+      transform: translate(-4px, -2px);
+    }
+    &--icon {
+      font-size: 1.4em;
+    }
+  }
+  &__icon {
+    margin-bottom: 8px;
+    margin-right: 4px;
+    font-size: 1.2em;
+  }
+}

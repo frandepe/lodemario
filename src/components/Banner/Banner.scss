@@ -1,0 +1,84 @@
+.Banner {
+  &__imagen {
+    padding: 0;
+  }
+  &__imagen img {
+    height: 300px;
+    width: 100%;
+  }
+  &__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--fourth);
+    padding: 0;
+  }
+  &__card {
+    display: grid;
+    width: 100%;
+    height: 100%;
+  }
+  &__front {
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+  }
+  &__blue {
+    background-color: var(--fourth);
+    grid-column: 8 / span 5;
+    grid-row: 1 / span 4;
+  }
+  &__yellow {
+    background-color: var(--primary);
+    grid-column: 1 / span 7;
+    grid-row: 1 / span 4;
+  }
+  &__pink {
+    background-color: var(--secondary);
+    -webkit-clip-path: polygon(0% 0%, 100% 0%, 0% 100%);
+    clip-path: polygon(0% 0%, 100% 0%, 0% 100%);
+    grid-row: 1 / span 3;
+    grid-column: 1 / span 11;
+    position: relative;
+    z-index: 2;
+  }
+  &__dots {
+    background: radial-gradient(var(--secondary) 20%, transparent 19%),
+      radial-gradient(var(--secondary) 20%, transparent 19%), transparent;
+    background-size: 3px 3px;
+    background-position: 0 0, 3px 3px;
+    grid-column: 1 / span 12;
+    grid-row: 3 / span 2;
+
+    z-index: 1;
+  }
+  &__personal-intro {
+    display: flex;
+    flex-direction: column;
+    grid-column: 4 / span 6;
+    grid-row: 2 / span 2;
+    justify-content: center;
+    text-align: center;
+    z-index: 3;
+    width: 250px;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 2px;
+  }
+  &__personal-intro p {
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  &__personal-intro p:first-of-type {
+    font-size: 1.2em;
+  }
+  &__personal-intro p:last-of-type {
+    font-size: 0.8em;
+    margin-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}

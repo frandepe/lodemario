@@ -1,0 +1,70 @@
+.Carousel {
+  &__containerCarousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--fourth);
+    width: 100vw;
+    height: 400px;
+  }
+  &__container {
+    width: 100%;
+    max-width: 100vh;
+    margin-bottom: 2px;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__item {
+    width: 250px;
+    flex: none;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 4px 16px 0 rgba(161, 161, 161, 0.37);
+    border-radius: 2px;
+    border: 2px solid rgba(95, 95, 95, 0.18);
+    margin-right: 5px;
+  }
+
+  &__carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    box-shadow: 0 4px 16px 0 rgba(161, 161, 161, 0.37);
+    border-radius: 2px;
+  }
+  &__carousel::-webkit-scrollbar {
+    display: none;
+  }
+
+  &__buttons {
+    &--left {
+      display: flex;
+      align-items: center;
+      -webkit-transform: translate(12px, 0);
+      -moz-transform: translate(12px, 0);
+      transform: translate(12px, 0);
+      font-size: 2.2em;
+      cursor: pointer;
+      color: var(--secondary);
+      transition: all 0.2s;
+    }
+    &--right {
+      display: flex;
+      align-items: center;
+      -webkit-transform: translate(-12px, 0);
+      -moz-transform: translate(-12px, 0);
+      transform: translate(-12px, 0);
+      font-size: 2.2em;
+      cursor: pointer;
+      color: var(--secondary);
+      transition: all 0.2s;
+    }
+  }
+  &__buttons {
+    &--left:hover {
+      color: var(--secondaryHover);
+    }
+    &--right:hover {
+      color: var(--secondaryHover);
+    }
+  }
+}

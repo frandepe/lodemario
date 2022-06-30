@@ -37,6 +37,11 @@
       -moz-transform: translate(-4px, -2px);
       transform: translate(-4px, -2px);
     }
+    &--register {
+      -webkit-transform: translate(0px, 4px);
+      -moz-transform: translate(0px, 4px);
+      transform: translate(0px, 4px);
+    }
     &--icon {
       font-size: 1.4em;
     }
@@ -45,5 +50,9 @@
     margin-bottom: 8px;
     margin-right: 4px;
     font-size: 1.2em;
+  }
+  &__btnClose {
+    height: 30px;
+    margin-top: 15px;
   }
 }

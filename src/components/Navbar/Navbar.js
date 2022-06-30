@@ -1,5 +1,5 @@
 import { Navbar, Container, Nav } from "react-bootstrap";
-import logo from "./logoCooking.png";
+import logo from "../../utilities/images/logoMario2.png";
 import { FaStore } from "react-icons/fa";
 import { TbBrandTelegram } from "react-icons/tb";
 import { AiFillQuestionCircle } from "react-icons/ai";
@@ -24,7 +24,7 @@ const NavbarComp = () => {
             {" "}
             <img
               src={logo}
-              width="80"
+              width="120"
               height="auto"
               className="d-inline-block align-top img-logotipo"
               alt={"logo"}
@@ -42,7 +42,7 @@ const NavbarComp = () => {
                 <FaStore className="NavbarComp__icon" />
                 INICIO
               </Nav.Link>
-              <Nav.Link href="#">
+              <Nav.Link href="quienes-somos">
                 {" "}
                 <AiFillQuestionCircle className="NavbarComp__icon" />
                 QUIENES SOMOS
@@ -51,7 +51,7 @@ const NavbarComp = () => {
                 <RiShoppingBasket2Fill className="NavbarComp__icon" />
                 COMO COMPRAR
               </Nav.Link>
-              <Nav.Link href="#action2">
+              <Nav.Link href="contacto">
                 <TbBrandTelegram className="NavbarComp__icon" />
                 CONTACTO
               </Nav.Link>

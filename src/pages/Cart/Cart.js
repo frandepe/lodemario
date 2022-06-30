@@ -10,12 +10,13 @@ import { Card, Row, Col, Button } from "react-bootstrap";
 import { RiShoppingBasket2Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import "./Cart.scss";
+import Spiner from "../../shared/spiner";
 
 const Cart = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const [total, setTotal] = useState(0);
-  const { cart, products } = state.shopping;
+  const { cart, products, loading } = state.shopping;
   console.log(cart);
 
   useEffect(() => {
@@ -37,7 +38,7 @@ const Cart = () => {
   }, []);
 
   return (
-    <div>
+    <div className="Cart__containerAll">
       <Row>
         <Row className="Cart__header">
           <h2>
@@ -68,15 +69,19 @@ const Cart = () => {
             </Col>
           </Row>
           <Row className="Cart__row2">
-            {cart.map((item, index) => (
-              <CartItem
-                key={index}
-                data={item}
-                delOneFromCart={() => dispatch(delFromCart(item.id))}
-                delAllFromCart={() => dispatch(delFromCart(item.id, true))}
-                addToCart={() => dispatch(addToCart(item.id))}
-              />
-            ))}
+            {!loading ? (
+              cart.map((item, index) => (
+                <CartItem
+                  key={index}
+                  data={item}
+                  delOneFromCart={() => dispatch(delFromCart(item.id))}
+                  delAllFromCart={() => dispatch(delFromCart(item.id, true))}
+                  addToCart={() => dispatch(addToCart(item.id))}
+                />
+              ))
+            ) : (
+              <Spiner />
+            )}
           </Row>
         </Col>
         <Col sm={2} className="Cart__compra">

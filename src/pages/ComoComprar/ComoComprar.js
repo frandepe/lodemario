@@ -1,23 +1,22 @@
 import React from "react";
-import { Row, Col, Container, Card } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 import FAQ from "../../components/FAQ/FAQ";
 import imgBanner from "../../utilities/images/banner-como-comprar.jpg";
 import { FaOpencart } from "react-icons/fa";
 import { BiPencil } from "react-icons/bi";
 import { RiShoppingBasket2Line } from "react-icons/ri";
 import "./ComoComprar.scss";
+import BannerHeader from "../../components/BannerHeader/BannerHeader";
 
 const ComoComprar = () => {
   return (
     <div>
       <Row>
-        <Card className="ComoComprar__container">
-          <Card.Img src={imgBanner} alt="Card image" />
-          <Card.ImgOverlay className="ComoComprar__textBanner">
-            <h2>Comprá en Lo de Mario</h2>
-            <p>Toda la información que necesitás</p>
-          </Card.ImgOverlay>
-        </Card>
+        <BannerHeader
+          title="Comprá en Lo de Mario"
+          description="Toda la información que necesitás"
+          src={imgBanner}
+        />
       </Row>
       <Container>
         <Row className="ComoComprar__descripcion">

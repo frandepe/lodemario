@@ -1,0 +1,103 @@
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  height: 80vh;
+
+  &__input {
+    width: 500px;
+  }
+}
+
+.news-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container_section {
+  margin-bottom: 20%;
+  margin-left: 230px;
+}
+.container_filters {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.change-button-edit {
+  border: 1px solid black;
+  padding: 2px 4px 2px 4px;
+  text-align: center;
+}
+
+.change-button-delete {
+  border: 1px solid black;
+  width: 30px;
+  height: auto;
+  text-align: center;
+  padding-top: 1px;
+  color: var(--primary);
+}
+
+.btn-nuevo {
+  display: flex;
+  justify-content: space-around;
+  width: 40%;
+}
+
+/*** FORMS ***/
+
+.container_abm {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5%;
+}
+
+.container_form {
+  width: 80%;
+}
+
+.form_inputs span {
+  color: var(--secondary);
+  margin-left: 20px;
+}
+
+.form_radioCheck {
+  padding: 10px;
+}
+
+.form_radioCheck input {
+  margin: 5px;
+}
+
+.options {
+  display: flex;
+}
+
+/* FORM IMAGEN */
+
+.img-backoffice img {
+  text-align: center;
+  width: 50px;
+  height: auto;
+  margin-left: 10%;
+}
+
+.form_inputs-img {
+  height: 50vh;
+}
+
+.form_inputs-img label {
+  margin-top: 25px;
+}
+
+.form_inputs-img button {
+  margin-top: 25px;
+}
+
+.form_inputs-img img {
+  margin-top: 25px;
+}

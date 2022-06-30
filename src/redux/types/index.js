@@ -9,9 +9,14 @@ export const PRODUCTS_SPECIAL = "PRODUCTS_SPECIAL";
 export const ADD_TO_FAV = "ADD_TO_FAV";
 
 // BANNER
-
 export const BANNER = "BANNER";
 export const LOADING = "LOADING";
+
+// USERS
+export const LOGIN = "LOGIN";
+export const GET_USERS = "GET_USERS";
+export const REGISTER = "REGISTER";
+export const ERROR_USER = "ERROR_USER";
 
 //CRUD
 export const CREATE_DATA = "CREATE_DATA";

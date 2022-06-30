@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { BsSearch } from "react-icons/bs";
+import Spiner from "../../shared/spiner";
 import {
   addToCart,
   productsAction,
@@ -9,17 +10,24 @@ import {
   delFromCart,
 } from "../../redux/actions/shoppingAction";
 import ProductItem from "../ProductItem/ProductItem";
-import { Form, InputGroup, FormControl, Row, Col } from "react-bootstrap";
+import {
+  Form,
+  InputGroup,
+  FormControl,
+  Row,
+  Col,
+  Dropdown,
+  DropdownButton,
+} from "react-bootstrap";
 import "./ShoppingCart.scss";
 
 const ShoppingCart = () => {
   const [search, setSearch] = useState("");
-  // const [price, setPrice] = useState(0);
+  const [sortedField, setSortedField] = useState(null);
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
-  // const [sort, setSort] = useState();
 
-  const { cart, products, category } = state.shopping;
+  const { cart, products, category, loading } = state.shopping;
   console.log(category.category);
 
   const handleChange = (e) => {
@@ -30,10 +38,17 @@ const ShoppingCart = () => {
     setSearch(e.target.value);
   };
 
-  // const handleInputPrice = (e) => {
-  //   setPrice(e.target.value);
-  //   console.log(e.target.value);
-  // };
+  if (sortedField !== null) {
+    category?.category?.sort((a, b) => {
+      if (a[sortedField] < b[sortedField]) {
+        return -1;
+      }
+      if (a[sortedField] > b[sortedField]) {
+        return 1;
+      }
+      return 0;
+    });
+  }
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -51,8 +66,8 @@ const ShoppingCart = () => {
 
   return (
     <div>
-      <Row>
-        <Col>
+      <Row className="ShoppingCart__container--filtros">
+        <Col sm={5}>
           <InputGroup className="mb-3 ShoppingCart__search">
             <InputGroup.Text id="basic-addon1">
               <BsSearch />
@@ -65,8 +80,29 @@ const ShoppingCart = () => {
             />
           </InputGroup>
         </Col>
-        <Col className="ShoppingCart__titleSearch">
+        <Col sm={5} className="ShoppingCart__titleSearch">
           <h5>Búsqueda por titulo: “{search}”</h5>
+        </Col>
+        <Col sm={2} className="ShoppingCart__sortable">
+          <DropdownButton
+            size="sm"
+            variant="light"
+            title="Ordenar por"
+            id="bg-vertical-dropdown-1"
+          >
+            <Dropdown.Item eventKey="1" onClick={() => setSortedField("name")}>
+              Nombre: A - Z
+            </Dropdown.Item>
+            <Dropdown.Item eventKey="2" onClick={() => setSortedField("price")}>
+              Precio: menor a mayor
+            </Dropdown.Item>
+            <Dropdown.Item
+              eventKey="3"
+              onClick={() => setSortedField("createdDate")}
+            >
+              Últimos
+            </Dropdown.Item>
+          </DropdownButton>
         </Col>
       </Row>
 
@@ -139,32 +175,26 @@ const ShoppingCart = () => {
             </div>
           ))}
         </Form>
-        {/* 
-        <input
-          onChange={handleInputPrice}
-          type="range"
-          value={price}
-          min="0"
-          max="300"
-          step="5"
-        /> */}
 
         <div className="ShoppingCart__container--products">
-          {category?.category
-            ?.filter((element) => {
-              return element.name.toLowerCase().includes(search.toLowerCase());
-            })
-            // .filter((element) => {
-            //   return element.price <= price;
-            // })
-            .map((product) => (
-              <ProductItem
-                key={product.id}
-                data={product}
-                addToCart={() => dispatch(addToCart(product.id))}
-                delOneFromCart={() => dispatch(delFromCart(product.id))}
-              />
-            ))}
+          {!loading ? (
+            category?.category
+              ?.filter((element) => {
+                return element.name
+                  .toLowerCase()
+                  .includes(search.toLowerCase());
+              })
+              .map((product) => (
+                <ProductItem
+                  key={product.id}
+                  data={product}
+                  addToCart={() => dispatch(addToCart(product.id))}
+                  delOneFromCart={() => dispatch(delFromCart(product.id))}
+                />
+              ))
+          ) : (
+            <Spiner />
+          )}
         </div>
       </div>
     </div>

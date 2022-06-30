@@ -6,15 +6,16 @@ import {
   PRODUCTS,
   PRODUCTS_CATEGORY,
   PRODUCTS_SPECIAL,
+  LOADING,
 } from "../types";
 
 export const initialState = {
   products: [],
   category: "",
-
   cart: localStorage.getItem("cart")
     ? JSON.parse(localStorage.getItem("cart"))
     : [],
+  loading: false,
 };
 
 // if (localStorage.getItem("cart")) {
@@ -79,20 +80,25 @@ export function shoppingReducer(state = initialState, action) {
       return {
         ...state,
         products: action.payload.products,
+        loading: false,
       };
     }
     case PRODUCTS_CATEGORY: {
       return {
         ...state,
         category: action.payload.category,
+        loading: false,
       };
     }
     case PRODUCTS_SPECIAL: {
       return {
         ...state,
         special: action.payload.special,
+        loading: false,
       };
     }
+    case LOADING:
+      return { ...state, loading: true };
     case CLEAR_CART:
       return initialState;
     default:

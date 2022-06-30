@@ -1,0 +1,114 @@
+.footer {
+  &__container {
+    width: 100%;
+  }
+  &__redes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    color: white;
+  }
+  &__redes a {
+    text-decoration: none;
+    color: white;
+    margin-left: 5px;
+  }
+
+  &__colup {
+    background-color: var(--secondary);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: white;
+  }
+
+  &__atencion-al-cliente {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &--tel {
+      border-right: 1px solid white;
+      margin-left: 5px;
+      margin-right: 5px;
+      padding-right: 5px;
+    }
+  }
+  &__atencion-al-cliente p {
+    margin: 0;
+  }
+  &__atencion-al-cliente svg {
+    font-size: 1.5em;
+  }
+  &__links {
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid rgb(206, 206, 206);
+  }
+  &__links a {
+    text-decoration: none;
+    line-height: 35px;
+    color: black;
+  }
+  &__links a:hover {
+    color: var(--secondary);
+  }
+  &__ayudarte {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &--text a {
+      color: white;
+    }
+  }
+  &__ayudarte svg {
+    font-size: 1.6em;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  &__ayudarte p {
+    margin: 0;
+  }
+  &__copyright {
+    background-color: var(--secondary);
+    color: white;
+  }
+  &__copyright p {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__copyright a {
+    text-decoration: none;
+    color: var(--fourth);
+    margin-left: 3px;
+  }
+  &__lastCol {
+    border-left: 1px solid rgb(206, 206, 206);
+    padding: 20px;
+  }
+  &__seguridad {
+    display: flex;
+
+    align-items: center;
+    margin-top: 25px;
+    &--text {
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+  }
+  &__seguridad p {
+    margin: 0;
+  }
+  &__seguridad svg {
+    font-size: 1.6em;
+  }
+  &__seguridad b {
+    background-color: var(--secondary);
+    color: white;
+    padding: 2px;
+    border-radius: 0px 9px 0px 9px;
+    -webkit-border-radius: 0px 9px 0px 9px;
+    -moz-border-radius: 0px 9px 0px 9px;
+  }
+}

@@ -4,6 +4,7 @@ import Carousel from "../../components/Carousel/Carousel";
 import "./Home.scss";
 import Banner from "../../components/Banner/Banner";
 import NavbarBottom from "../../components/NavbarBottom/NavbarBottom";
+import WhatsApp from "../../components/WhatsApp/WhatsApp";
 
 const Home = () => {
   return (
@@ -12,7 +13,7 @@ const Home = () => {
       <Row className="Home__first-row">
         <Banner />
         <Col className="Home__container-h2">
-          <h2>Ofertas del mes</h2>
+          <h2>Destacados</h2>
           <Carousel />
         </Col>
       </Row>
@@ -23,6 +24,7 @@ const Home = () => {
           </Col>
         </Row>
       </Container>
+      <WhatsApp />
     </div>
   );
 };

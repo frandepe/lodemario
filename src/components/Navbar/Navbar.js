@@ -20,7 +20,7 @@ const NavbarComp = () => {
         className="NavbarComp__container"
       >
         <Container>
-          <Navbar.Brand href="home">
+          <Navbar.Brand href="/">
             {" "}
             <img
               src={logo}
@@ -38,7 +38,7 @@ const NavbarComp = () => {
               navbarScroll
             ></Nav>
             <Nav className="NavbarComp__links">
-              <Nav.Link href="home">
+              <Nav.Link href="/">
                 <FaStore className="NavbarComp__icon" />
                 INICIO
               </Nav.Link>

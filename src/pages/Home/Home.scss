@@ -2,9 +2,16 @@
   &__container-h2 h2 {
     background-color: var(--fourth);
     margin-bottom: 0;
-    padding-left: 340px;
+    padding-left: 34px;
   }
   &__container-h2 {
     margin-top: 20px;
+  }
+  &__container-shop {
+    margin-bottom: 40px;
+    margin-top: 20px;
+  }
+  &__first-row {
+    margin-right: 0;
   }
 }

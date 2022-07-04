@@ -82,14 +82,19 @@ const Productos = () => {
             className="Select__container"
           >
             <option>Filtrar por categoría</option>
-            <option value="almacen">Almacen</option>
+            <optgroup label="Carrusel">
+              <option value="special">Carrusel</option>
+            </optgroup>
             <optgroup label="Fiambres">
               <option value="quesos">Quesos</option>
               <option value="fiambre">Fiambre</option>
             </optgroup>
-            <option value="congelados">Congelados</option>
-            <option value="frescos">Frescos</option>
-            <option value="bebidas">Bebidas</option>
+            <optgroup label="Otros">
+              <option value="almacen">Almacen</option>
+              <option value="congelados">Congelados</option>
+              <option value="frescos">Frescos</option>
+              <option value="bebidas">Bebidas</option>
+            </optgroup>
           </Form.Select>
         </div>
         <Table striped bordered hover>

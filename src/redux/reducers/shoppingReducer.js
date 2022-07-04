@@ -7,6 +7,7 @@ import {
   PRODUCTS_CATEGORY,
   PRODUCTS_SPECIAL,
   LOADING,
+  BANNER,
 } from "../types";
 
 export const initialState = {
@@ -16,6 +17,7 @@ export const initialState = {
     ? JSON.parse(localStorage.getItem("cart"))
     : [],
   loading: false,
+  banner: [],
 };
 
 // if (localStorage.getItem("cart")) {
@@ -97,6 +99,12 @@ export function shoppingReducer(state = initialState, action) {
         loading: false,
       };
     }
+    case BANNER:
+      return {
+        ...state,
+        banner: action.payload.banner,
+        loading: false,
+      };
     case LOADING:
       return { ...state, loading: true };
     case CLEAR_CART:

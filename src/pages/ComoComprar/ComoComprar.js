@@ -43,7 +43,7 @@ const ComoComprar = () => {
             </div>
             <b>Completá tus datos</b>
             <p>
-              Ingresá tus datos personales y el método de compra que prefieras
+              Ingresá tus datos personales para que podamos coordinar la compra
             </p>
           </Col>
           <Col sm={4} className="ComoComprar__flexIcons">
@@ -52,7 +52,7 @@ const ComoComprar = () => {
               <RiShoppingBasket2Line className="ComoComprar__icon" />
             </div>
             <b>Finalizar compra</b>
-            <p>Nos pondremos en contacto para coordinar la entrega</p>
+            <p>Nos pondremos en contacto para concluir el pedido</p>
           </Col>
         </Row>
         <Row className="ComoComprar__faq">

@@ -71,12 +71,13 @@
   &__copyright {
     background-color: var(--secondary);
     color: white;
+    text-align: center;
+    margin: 0;
   }
   &__copyright p {
     margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+    padding: 0;
   }
   &__copyright a {
     text-decoration: none;
@@ -110,5 +111,16 @@
     border-radius: 0px 9px 0px 9px;
     -webkit-border-radius: 0px 9px 0px 9px;
     -moz-border-radius: 0px 9px 0px 9px;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  .footer {
+    &__lastCol {
+      border-left: none;
+    }
+    &__links {
+      border-right: none;
+    }
   }
 }

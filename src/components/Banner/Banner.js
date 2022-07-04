@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { bannerAction } from "../../redux/actions/BannerAction";
+import { bannerAction } from "../../redux/actions/shoppingAction";
 import { Row, Col } from "react-bootstrap";
 import "./Banner.scss";
 import LazyLoad from "../../shared/LazyLoad";
@@ -8,12 +8,12 @@ import LazyLoad from "../../shared/LazyLoad";
 const Banner = () => {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
-
-  const { banner } = state.banner;
+  // pasar todo el componente a shopping cart
+  const { banner } = state.shopping;
   console.log(banner);
 
   useEffect(() => {
-    dispatch(bannerAction(banner.banner));
+    dispatch(bannerAction(banner));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

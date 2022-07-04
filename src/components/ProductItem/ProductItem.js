@@ -7,16 +7,12 @@ import { BsCartDash, BsCartPlus } from "react-icons/bs";
 import LazyLoad from "../../shared/LazyLoad";
 
 const ProductItem = ({ data, addToCart, delOneFromCart }) => {
-  let { id, name, price } = data;
+  let { id, name, price, imagen } = data;
   const [count, setCount] = useState(0);
-
+  // src="https://t2.ev.ltmcdn.com/es/posts/7/0/2/germinar_semillas_de_manzana_como_hacerlo_y_cuidados_2207_600.jpg"
   return (
     <div className="Carousel__item">
-      <LazyLoad
-        variant="top"
-        src="https://t2.ev.ltmcdn.com/es/posts/7/0/2/germinar_semillas_de_manzana_como_hacerlo_y_cuidados_2207_600.jpg"
-        width={246}
-      />
+      <LazyLoad variant="top" src={imagen} width={246} height={222} />
       <Card.Body className="ProductItem__info">
         <Card.Title className="ProductItem__nombre">{name}</Card.Title>
 

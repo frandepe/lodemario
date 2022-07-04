@@ -48,13 +48,13 @@ const Footer = () => {
           <Row className="footer__coldown">
             <Col sm={5} className="footer__links">
               <b>Lo De Mario</b>
-              <Link to="/home">Productos</Link>
+              <Link to="/">Productos</Link>
               <Link to="/cart">Tu compra</Link>
-              <Link to="/">¿Quiénes somos?</Link>
+              <Link to="/quienes-somos">¿Quiénes somos?</Link>
               <Link to="/como-comprar">
                 Pregunta Frecuentes / ¿Cómo comprar?
               </Link>
-              <Link to="/">Contactanos</Link>
+              <Link to="/contacto">Contactanos</Link>
             </Col>
             <Col sm={5}>
               <b>La Plata</b>

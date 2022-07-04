@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import "./CartItem.scss";
 
 const CartItem = ({ data, delOneFromCart, delAllFromCart, addToCart }) => {
-  let { id, name, price, quantity } = data;
+  let { id, name, price, quantity, imagen } = data;
 
   const state = useSelector((state) => state);
   const { cart } = state.shopping;
@@ -21,11 +21,8 @@ const CartItem = ({ data, delOneFromCart, delAllFromCart, addToCart }) => {
       <Card.Body className="CartItem__container">
         <Row>
           <Col className="CartItem__container--imgTitle">
-            <Card.Img
-              variant="top"
-              src="https://t2.ev.ltmcdn.com/es/posts/7/0/2/germinar_semillas_de_manzana_como_hacerlo_y_cuidados_2207_600.jpg"
-            />
-            <Card.Title>{name}</Card.Title>
+            <Card.Img variant="top" src={imagen} />
+            <p>{name}</p>
           </Col>
           <Col className="CartItem__flex">
             <Card.Text>${price}.00</Card.Text>
@@ -33,13 +30,11 @@ const CartItem = ({ data, delOneFromCart, delAllFromCart, addToCart }) => {
           <Col className="CartItem__container--count CartItem__flex">
             <AiOutlineMinus
               className="CartItem__count"
-              // onClick={handleClickLess}
               onClick={() => delOneFromCart(id) && setCount(quantity - 1)}
             />
             <Card.Text className="CartItem__count--number">{count}</Card.Text>
             <AiOutlinePlus
               className="CartItem__count"
-              // onClick={handleClickMore}
               onClick={() => addToCart(id) && setCount(quantity + 1)}
             />
           </Col>

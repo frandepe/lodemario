@@ -1,4 +1,8 @@
 .Banner {
+  &__container {
+    width: 100vw;
+    --bs-gutter-x: 0rem;
+  }
   &__imagen {
     padding: 0;
   }

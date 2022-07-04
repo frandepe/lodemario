@@ -14,21 +14,35 @@ import {
   Form,
   InputGroup,
   FormControl,
-  Row,
-  Col,
   Dropdown,
   DropdownButton,
 } from "react-bootstrap";
 import "./ShoppingCart.scss";
+import Pagination from "../Pagination/Pagination";
+import "../shared.scss";
 
 const ShoppingCart = () => {
   const [search, setSearch] = useState("");
   const [sortedField, setSortedField] = useState(null);
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
-
   const { cart, products, category, loading } = state.shopping;
-  console.log(category.category);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(5);
+
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = category?.category?.slice(
+    indexOfFirstPost,
+    indexOfLastPost
+  );
+  // const nextPage = () => {
+  //   setCurrentPage(currentPage + 1);
+  // };
+
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const handleChange = (e) => {
     dispatch(categoryAction(e.target.value));
@@ -66,8 +80,8 @@ const ShoppingCart = () => {
 
   return (
     <div>
-      <Row className="ShoppingCart__container--filtros">
-        <Col sm={5}>
+      <div className="ShoppingCart__container--filtros">
+        <div>
           <InputGroup className="mb-3 ShoppingCart__search">
             <InputGroup.Text id="basic-addon1">
               <BsSearch />
@@ -79,11 +93,15 @@ const ShoppingCart = () => {
               aria-describedby="basic-addon1"
             />
           </InputGroup>
-        </Col>
-        <Col sm={5} className="ShoppingCart__titleSearch">
-          <h5>Búsqueda por titulo: “{search}”</h5>
-        </Col>
-        <Col sm={2} className="ShoppingCart__sortable">
+        </div>
+        <div className="ShoppingCart__titleSearch">
+          <h5>
+            Mostrando {currentPosts?.length} de {category?.category?.length}{" "}
+            resultados
+          </h5>
+        </div>
+
+        <div className="ShoppingCart__sortable">
           <DropdownButton
             size="sm"
             variant="light"
@@ -103,19 +121,28 @@ const ShoppingCart = () => {
               Últimos
             </Dropdown.Item>
           </DropdownButton>
-        </Col>
-      </Row>
+        </div>
+      </div>
+      <div className="ShoppingCart__h3yPagination">
+        <h3 className="ShoppingCart__titleProductos">Productos</h3>
 
-      <h3 className="ShoppingCart__titleProductos">Productos</h3>
+        <Pagination
+          postsPerPage={postsPerPage}
+          totalPosts={category?.category?.length}
+          paginate={paginate}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      </div>
       <div className="ShoppingCart__container">
         <Form
           value={category}
           onChange={handleChange}
           className="ShoppingCart__container--radios"
         >
-          <h5 className="ShoppingCart__titleCategorias">
+          <h6 className="ShoppingCart__titleCategorias">
             Categoría del producto
-          </h5>
+          </h6>
           {["radio"].map((type) => (
             <div key={`inline-${type}`} className="mb-3">
               <Form.Check
@@ -178,7 +205,7 @@ const ShoppingCart = () => {
 
         <div className="ShoppingCart__container--products">
           {!loading ? (
-            category?.category
+            currentPosts
               ?.filter((element) => {
                 return element.name
                   .toLowerCase()
@@ -197,6 +224,11 @@ const ShoppingCart = () => {
           )}
         </div>
       </div>
+      <Pagination
+        postsPerPage={postsPerPage}
+        totalPosts={category?.category?.length}
+        paginate={paginate}
+      />
     </div>
   );
 };

@@ -1,0 +1,13 @@
+.Pagination {
+  &__container {
+    display: flex;
+    justify-content: flex-end;
+  }
+  &__container p {
+    cursor: pointer;
+    color: var(--secondary);
+  }
+  &__container svg {
+    font-size: 1.2em;
+  }
+}

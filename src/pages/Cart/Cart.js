@@ -8,16 +8,25 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import { Card, Row, Col, Button } from "react-bootstrap";
 import { RiShoppingBasket2Line } from "react-icons/ri";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 import "./Cart.scss";
 import Spiner from "../../shared/spiner";
 
 const Cart = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const [total, setTotal] = useState(0);
   const { cart, products, loading } = state.shopping;
-  console.log(cart);
+
+  const handleBtnCompra = () => {
+    if (total > 2000) {
+      navigate("/contacto");
+    } else {
+      toast.warn("La compra debe superar los 2000$");
+    }
+  };
 
   useEffect(() => {
     const newAr = cart.reduce(
@@ -39,7 +48,8 @@ const Cart = () => {
 
   return (
     <div className="Cart__containerAll">
-      <Row>
+      <ToastContainer position="bottom-center" limit={1} />
+      <Row className="Cart__containerRows">
         <Row className="Cart__header">
           <h2>
             <RiShoppingBasket2Line
@@ -51,6 +61,9 @@ const Cart = () => {
           </h2>
         </Row>
         <Col sm={10}>
+          <Row className="Cart__rowMobile">
+            <Card.Text>Tus productos</Card.Text>
+          </Row>
           <Row className="Cart__row">
             <Col>
               <Card.Text>Producto</Card.Text>
@@ -97,11 +110,13 @@ const Cart = () => {
             <Col>${total}.00</Col>
           </Row>
           {/* <button onClick={() => dispatch(clearCart())}>Limpiar Carrito</button> */}
-          <Button variant="secondary">COMPRAR</Button>
+          <Button variant="secondary" onClick={handleBtnCompra}>
+            COMPRAR
+          </Button>
         </Col>
       </Row>
       <Row className="Cart__continuarCompra">
-        <Link to="/home">{"<"} Continuar con la compra</Link>
+        <Link to="/">{"<"} Continuar con la compra</Link>
       </Row>
     </div>
   );

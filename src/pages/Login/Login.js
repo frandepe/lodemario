@@ -17,7 +17,7 @@ const Login = () => {
   console.log("INFOUSER", infoUser);
 
   useEffect(() => {
-    window.localStorage.getItem("token") && navigate("/home");
+    window.localStorage.getItem("token") && navigate("/");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [window.localStorage.getItem("token")]);
 

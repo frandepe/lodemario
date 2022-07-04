@@ -8,7 +8,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { privatePutRequest } from "../../../services/privateApiServices";
 import "../sharedBack.scss";
 
-const ProductosForm = (patchData) => {
+const BannerBackForm = (patchData) => {
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -29,15 +29,14 @@ const ProductosForm = (patchData) => {
   const [statusForm, setStatusForm] = useState(false);
 
   const formSchema = yup.object().shape({
-    name: yup
+    title: yup
       .string()
       .required("El campo es requerido")
       .max(50, "No puede ingresar más de 50 caracteres"),
-    category: yup
+    description: yup
       .string()
       .required("El campo es requerido")
       .max(50, "No puede ingresar más de 50 caracteres"),
-    price: yup.number().required("El campo es requerido"),
     imagen: yup
       .mixed()
       .required("La imagen es requerida")
@@ -47,18 +46,15 @@ const ProductosForm = (patchData) => {
         return true;
       }),
   });
-  console.log("PatchData:", patchData);
 
   return (
     <div className="container_abm">
       <div className="container_form">
-        <h2>Productos</h2>
+        <h2>Banner</h2>
         <Formik
           initialValues={{
-            // id: patchData?.location?.state?.id || "",
-            name: location?.state?.element?.name || "",
-            category: location?.state?.element?.category || "",
-            price: location?.state?.element?.price || "",
+            title: location?.state?.element?.title || "",
+            description: location?.state?.element?.description || "",
             imagen: location?.state?.element?.imagen || "",
           }}
           validationSchema={formSchema}
@@ -67,16 +63,16 @@ const ProductosForm = (patchData) => {
             try {
               if (location?.state?.element?.id) {
                 const putRes = await privatePutRequest({
-                  url: `products/${location?.state?.element?.id}`,
+                  url: `banner/${location?.state?.element?.id}`,
                   putData: { ...formData },
                 });
                 console.log(putRes);
 
                 showAlert({ type: "success", title: "Editado correctamente" });
-                navigate("/backoffice/productos");
+                navigate("/backoffice/banner");
                 return;
               }
-              const response = await privatePostRequest("products", {
+              const response = await privatePostRequest("banner", {
                 ...formData,
               });
               console.log(response);
@@ -87,7 +83,7 @@ const ProductosForm = (patchData) => {
                 title: patchData?.location?.state?.id
                   ? "Editado correctamente"
                   : "Creado correctamente",
-              }) && navigate("/backoffice/productos");
+              }) && navigate("/backoffice/banner");
             } catch (err) {
               console.log("Error catch:", err);
             } finally {
@@ -104,63 +100,40 @@ const ProductosForm = (patchData) => {
             setFieldTouched,
           }) => (
             <form className="form_inputs" onSubmit={handleSubmit}>
-              <Form.Label htmlFor="name">Nombre</Form.Label>
+              <Form.Label htmlFor="title">Título</Form.Label>
               <Form.Control
-                placeholder="Nombre del producto"
+                placeholder="Título"
                 required
-                name="name"
-                id="name"
+                name="title"
+                id="title"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.name}
-              />
-              <ErrorMessage name="name" component="p" className="input-error" />
-
-              <Form.Label htmlFor="countdown">Categoria</Form.Label>
-              <Form.Select
-                className="select-field"
-                name="category"
-                id="category"
-                data-testid="category"
-                value={values.category}
-                onChange={handleChange}
-              >
-                <option value="" disabled>
-                  Selecciona categoria
-                </option>
-                <optgroup label="Carrusel del inicio">
-                  <option value="special">Carrusel</option>
-                </optgroup>
-                <optgroup label="Fiambres">
-                  <option value="quesos">Quesos</option>
-                  <option value="fiambre">Fiambre</option>
-                </optgroup>
-                <optgroup label="Otros">
-                  <option value="almacen">Almacen</option>
-                  <option value="congelados">Congelados</option>
-                  <option value="frescos">Frescos</option>
-                  <option value="bebidas">Bebidas</option>
-                </optgroup>
-              </Form.Select>
-              <Form.Label htmlFor="price">Precio</Form.Label>
-              <Form.Control
-                placeholder="Precio"
-                required
-                type="number"
-                name="price"
-                id="price"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.price}
+                value={values.title}
               />
               <ErrorMessage
-                name="price"
+                name="title"
+                component="p"
+                className="input-error"
+              />
+
+              <Form.Label htmlFor="description">Description</Form.Label>
+              <Form.Control
+                placeholder="Descripción"
+                required
+                type="text"
+                name="description"
+                id="description"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.description}
+              />
+              <ErrorMessage
+                name="description"
                 component="p"
                 className="input-error"
               />
 
               <Form.Label htmlFor="fecha">Subir imagen</Form.Label>
-
               <Form.Control
                 data-testid="imagen"
                 type="file"
@@ -202,4 +175,4 @@ const ProductosForm = (patchData) => {
   );
 };
 
-export default ProductosForm;
+export default BannerBackForm;

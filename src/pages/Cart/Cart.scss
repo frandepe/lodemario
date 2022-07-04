@@ -5,9 +5,20 @@
     background-color: var(--primary);
     padding-left: 80px;
   }
+  &__rowMobile {
+    display: none;
+  }
+  &__containerRows {
+    margin-right: 0;
+  }
   &__header {
-    margin: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
     border-bottom: 1px solid var(--fourth);
+  }
+  &__header h2 {
+    margin-left: 30px;
+    width: 300px;
   }
   &__row2 {
     padding-left: 20px;
@@ -30,13 +41,32 @@
     margin-left: 5px;
     margin-right: 10px;
   }
+  &__continuarCompra {
+    margin: 0;
+  }
   &__continuarCompra a {
     text-decoration: none;
     margin-left: 50px;
     margin-top: 5px;
     color: var(--secondary);
+    width: 300px;
   }
   &__containerAll {
     min-height: 80vh;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  .Cart {
+    &__rowMobile {
+      display: flex;
+      padding-left: 10px;
+      font-weight: 500;
+      color: white;
+      background-color: var(--primary);
+    }
+    &__row {
+      display: none;
+    }
   }
 }

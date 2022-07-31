@@ -12,17 +12,20 @@ import Spiner from "../../../shared/spiner";
 import { useNavigate } from "react-router-dom";
 import HeaderBack from "../HeaderBack/HeaderBack";
 import "../sharedBack.scss";
+import Pagination from "../../../components/Pagination/Pagination";
 
 const Productos = () => {
   const dispatch = useDispatch();
   const [deleted, setDeleted] = useState(false);
   const [searchCategory, setSearchCategory] = useState(null);
   const [search, setSearch] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(20);
   const state = useSelector((state) => state);
   const { products, loading } = state.shopping;
-  console.log("dashboardprod", products);
+
   const navigate = useNavigate();
-  console.log(searchCategory);
+
   async function handleRemove(id) {
     try {
       await privateDeleteRequest(`products/${id}`);
@@ -35,6 +38,15 @@ const Productos = () => {
       });
     }
   }
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = products?.products?.slice(
+    indexOfFirstPost,
+    indexOfLastPost
+  );
 
   const handleChange = (e) => {
     setSearchCategory(e.target.value);
@@ -57,9 +69,19 @@ const Productos = () => {
       <section className="container_section">
         <header className="news-header">
           <h1>Listado de todos los productos</h1>
-          <div className="btn-nuevo">
-            <Button onClick={() => navigate("/backoffice")}>Regresar</Button>
-            <Button onClick={() => navigate("/backoffice/productosForm")}>
+          <div className="btn-group btn_groups">
+            <Button
+              onClick={() => navigate("/backoffice")}
+              variant="tertiary"
+              size="sm"
+            >
+              Regresar
+            </Button>
+            <Button
+              onClick={() => navigate("/backoffice/productosForm")}
+              variant="tertiary"
+              size="sm"
+            >
               Agregar producto +
             </Button>
           </div>
@@ -96,6 +118,15 @@ const Productos = () => {
               <option value="bebidas">Bebidas</option>
             </optgroup>
           </Form.Select>
+          <div style={{ marginTop: "30px" }}>
+            <Pagination
+              postsPerPage={postsPerPage}
+              totalPosts={products?.products?.length}
+              paginate={paginate}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+            />
+          </div>
         </div>
         <Table striped bordered hover>
           <thead>
@@ -111,7 +142,7 @@ const Productos = () => {
             {loading ? (
               <Spiner />
             ) : (
-              products?.products
+              currentPosts
                 ?.filter((element) => {
                   if (searchCategory === null) {
                     return element;

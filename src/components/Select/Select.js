@@ -7,7 +7,6 @@ const Select = () => {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const { category } = state.shopping;
-  console.log(category.category);
 
   const handleChange = (e) => {
     dispatch(categoryAction(e.target.value));

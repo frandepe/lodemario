@@ -47,9 +47,19 @@ const BannerBack = () => {
       <section className="container_section">
         <header className="news-header">
           <h1>Banner del inicio</h1>
-          <div className="btn-nuevo">
-            <Button onClick={() => navigate("/backoffice")}>Regresar</Button>
-            <Button onClick={() => navigate("/backoffice/bannerForm")}>
+          <div className="btn-group btn_groups">
+            <Button
+              onClick={() => navigate("/backoffice")}
+              variant="tertiary"
+              size="sm"
+            >
+              Regresar
+            </Button>
+            <Button
+              onClick={() => navigate("/backoffice/bannerForm")}
+              variant="tertiary"
+              size="sm"
+            >
               Agregar banner +
             </Button>
           </div>

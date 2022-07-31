@@ -6,6 +6,7 @@ import {
   addToCart,
   specialAction,
   delFromCart,
+  addToFav,
 } from "../../redux/actions/shoppingAction";
 import "./carousel.scss";
 
@@ -13,7 +14,7 @@ const Carousel = () => {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  const { special } = state.shopping;
+  const { special, fav } = state.shopping;
   const carousel = useRef(null);
   const handleLeftClick = (e) => {
     e.preventDefault();
@@ -43,6 +44,9 @@ const Carousel = () => {
               data={product}
               addToCart={() => dispatch(addToCart(product.id))}
               delOneFromCart={() => dispatch(delFromCart(product.id))}
+              addToFav={() => {
+                dispatch(addToFav(fav, product));
+              }}
             />
           ))}
         </div>

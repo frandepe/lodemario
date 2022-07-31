@@ -10,7 +10,6 @@ const Banner = () => {
   const dispatch = useDispatch();
   // pasar todo el componente a shopping cart
   const { banner } = state.shopping;
-  console.log(banner);
 
   useEffect(() => {
     dispatch(bannerAction(banner));

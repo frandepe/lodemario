@@ -50,6 +50,14 @@ const BannerBackForm = (patchData) => {
   return (
     <div className="container_abm">
       <div className="container_form">
+        <p
+          onClick={() => {
+            navigate("/backoffice/banner");
+          }}
+          className="btn-atras"
+        >
+          {"<"} Atras
+        </p>
         <h2>Banner</h2>
         <Formik
           initialValues={{
@@ -62,20 +70,18 @@ const BannerBackForm = (patchData) => {
             setStatusForm(true);
             try {
               if (location?.state?.element?.id) {
-                const putRes = await privatePutRequest({
+                await privatePutRequest({
                   url: `banner/${location?.state?.element?.id}`,
                   putData: { ...formData },
                 });
-                console.log(putRes);
 
                 showAlert({ type: "success", title: "Editado correctamente" });
                 navigate("/backoffice/banner");
                 return;
               }
-              const response = await privatePostRequest("banner", {
+              await privatePostRequest("banner", {
                 ...formData,
               });
-              console.log(response);
               // if (!response?.data?.status === 200)
               //   throw new Error("Algo falló");
               showAlert({
@@ -164,7 +170,7 @@ const BannerBackForm = (patchData) => {
 
               <div className="btn-nuevo">
                 <Button type="submit" disabled={statusForm}>
-                  {patchData?.location?.state?.id ? "Editar" : "Crear"}
+                  {location?.state?.element?.id ? "Editar" : "Crear"}
                 </Button>
               </div>
             </form>

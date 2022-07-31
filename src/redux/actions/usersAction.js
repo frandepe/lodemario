@@ -16,7 +16,6 @@ export const registerAction =
       });
       localStorage.setItem("token", response.token);
       localStorage.setItem("response", JSON.stringify(response));
-      console.log(response);
       dispatch({
         type: REGISTER,
         payload: response,
@@ -38,7 +37,6 @@ export const loginAction =
       });
       localStorage.setItem("token", response.token);
       localStorage.setItem("response", JSON.stringify(response));
-      console.log(response);
       dispatch({
         type: LOGIN,
         payload: response,
@@ -54,7 +52,6 @@ export const usersAction = () => async (dispatch) => {
   try {
     const response = await getDataMethodPrivate("user");
     const data = response?.data;
-    console.log(data);
     dispatch({
       type: GET_USERS,
       payload: { users: data },

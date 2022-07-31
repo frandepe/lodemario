@@ -8,6 +8,8 @@ import {
   PRODUCTS_SPECIAL,
   LOADING,
   BANNER,
+  ADD_TO_FAV,
+  REMOVE_ALL_FROM_FAV,
 } from "../types";
 
 export const initialState = {
@@ -18,6 +20,9 @@ export const initialState = {
     : [],
   loading: false,
   banner: [],
+  fav: localStorage.getItem("fav")
+    ? JSON.parse(localStorage.getItem("fav"))
+    : [],
 };
 
 // if (localStorage.getItem("cart")) {
@@ -29,11 +34,9 @@ export const initialState = {
 export function shoppingReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_TO_CART: {
-      // localStorage.setItem("cart", JSON.stringify(state.cart));
       let newItem = state.products.products.find(
         (product) => product.id === action.payload
       );
-      //console.log(newItem);
 
       let itemInCart = state.cart.find((item) => item.id === newItem.id);
 
@@ -54,8 +57,6 @@ export function shoppingReducer(state = initialState, action) {
     case REMOVE_ONE_FROM_CART: {
       action.type && localStorage.setItem("cart", JSON.stringify(state.cart));
       let itemToDelete = state.cart.find((item) => item.id === action.payload);
-
-      // localStorage.setItem("cart", JSON.stringify(itemToDelete));
 
       return itemToDelete.quantity > 1
         ? {
@@ -99,12 +100,24 @@ export function shoppingReducer(state = initialState, action) {
         loading: false,
       };
     }
+    case ADD_TO_FAV: {
+      if (state.fav.includes(action.payload)) {
+        return { ...state, fav: state.fav };
+      } else {
+        const updatedItem = state.fav.concat(action.payload);
+        return { ...state, fav: updatedItem };
+      }
+    }
+    case REMOVE_ALL_FROM_FAV: {
+      return { ...state, fav: state.fav.filter((id) => id !== action.payload) };
+    }
     case BANNER:
       return {
         ...state,
         banner: action.payload.banner,
         loading: false,
       };
+
     case LOADING:
       return { ...state, loading: true };
     case CLEAR_CART:

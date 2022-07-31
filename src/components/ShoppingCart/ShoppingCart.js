@@ -6,7 +6,7 @@ import {
   addToCart,
   productsAction,
   categoryAction,
-  // clearCart,
+  addToFav,
   delFromCart,
 } from "../../redux/actions/shoppingAction";
 import ProductItem from "../ProductItem/ProductItem";
@@ -24,12 +24,13 @@ import "../shared.scss";
 const ShoppingCart = () => {
   const [search, setSearch] = useState("");
   const [sortedField, setSortedField] = useState(null);
+
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
-  const { cart, products, category, loading } = state.shopping;
+  const { cart, products, category, loading, fav } = state.shopping;
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(5);
+  const [postsPerPage] = useState(9);
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -37,11 +38,7 @@ const ShoppingCart = () => {
     indexOfFirstPost,
     indexOfLastPost
   );
-  // const nextPage = () => {
-  //   setCurrentPage(currentPage + 1);
-  // };
 
-  // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const handleChange = (e) => {
@@ -202,7 +199,6 @@ const ShoppingCart = () => {
             </div>
           ))}
         </Form>
-
         <div className="ShoppingCart__container--products">
           {!loading ? (
             currentPosts
@@ -215,6 +211,9 @@ const ShoppingCart = () => {
                 <ProductItem
                   key={product.id}
                   data={product}
+                  addToFav={() => {
+                    dispatch(addToFav(fav, product));
+                  }}
                   addToCart={() => dispatch(addToCart(product.id))}
                   delOneFromCart={() => dispatch(delFromCart(product.id))}
                 />

@@ -19,7 +19,7 @@
 
 .container_section {
   margin-bottom: 20%;
-  margin-left: 230px;
+  margin-left: 95px;
 }
 .container_filters {
   display: flex;
@@ -43,12 +43,23 @@
 }
 
 .btn-nuevo {
-  display: flex;
-  justify-content: space-around;
-  width: 40%;
+  margin-top: 20px;
+}
+
+.btn_groups {
+  margin-right: 20px;
 }
 
 /*** FORMS ***/
+
+.btn-atras {
+  cursor: pointer;
+  color: var(--secondary);
+  font-weight: 600;
+}
+.btn-atras:hover {
+  color: var(--secondaryHover);
+}
 
 .container_abm {
   display: flex;
@@ -100,4 +111,10 @@
 
 .form_inputs-img img {
   margin-top: 25px;
+}
+
+@media only screen and (max-width: 720px) {
+  .container_filters {
+    flex-direction: column;
+  }
 }

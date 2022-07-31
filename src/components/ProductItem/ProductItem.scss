@@ -27,6 +27,9 @@
   &__count:active {
     color: var(--primary);
   }
+  &__nombre:first-letter {
+    text-transform: uppercase;
+  }
   &__info {
     text-align: center;
   }
@@ -38,5 +41,54 @@
     &--add {
       width: 100%;
     }
+  }
+  &__fav {
+    -webkit-transform: translate(185px, -265px);
+    -moz-transform: translate(185px, -265px);
+    transform: translate(185px, -265px);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 50%;
+    cursor: pointer;
+    svg {
+      font-size: 1.4em;
+    }
+  }
+  &__fav:after {
+    content: "";
+    display: block;
+    position: absolute;
+    border-radius: 3em;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: all 0.5s;
+    box-shadow: 0 0 5px 20px var(--fourth);
+  }
+  &__fav:active:after {
+    box-shadow: 0 0 0 0 var(--primary);
+    position: absolute;
+    border-radius: 3em;
+    left: 0;
+    top: 0;
+    opacity: 1;
+    transition: 0s;
+  }
+
+  &__fav:active {
+    top: 1px;
+  }
+  &__favActive {
+    color: var(--primary);
   }
 }

@@ -19,11 +19,19 @@
     height: 2px;
     background-color: var(--primary);
   }
+  &__icon {
+    -webkit-transform: translate(-4px, -2px);
+    -moz-transform: translate(-4px, -2px);
+    transform: translate(-4px, -2px);
+  }
   &__cart {
     &--container {
       display: flex;
       justify-content: center;
       align-items: center;
+    }
+    &--dropdown {
+      width: 300px;
     }
     &--length {
       border-radius: 50%;
@@ -33,9 +41,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      -webkit-transform: translate(-4px, -2px);
-      -moz-transform: translate(-4px, -2px);
-      transform: translate(-4px, -2px);
+      -webkit-transform: translate(-28px, -20px);
+      -moz-transform: translate(-28px, -20px);
+      transform: translate(-28px, -20px);
     }
     &--register {
       -webkit-transform: translate(0px, 4px);
@@ -43,16 +51,44 @@
       transform: translate(0px, 4px);
     }
     &--icon {
-      font-size: 1.4em;
+      text-align: center;
+      font-size: 16px;
+      svg {
+        font-size: 1.8em;
+      }
+    }
+    &--iconFav {
+      -webkit-transform: translate(0px, 12px);
+      -moz-transform: translate(0px, 12px);
+      transform: translate(0px, 12px);
+
+      svg {
+        font-size: 1.6em;
+      }
     }
   }
-  &__icon {
-    margin-bottom: 8px;
-    margin-right: 4px;
-    font-size: 1.2em;
+  &__endNavBottom {
+    display: flex;
+    flex-direction: row;
   }
+
   &__btnClose {
-    height: 30px;
-    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    svg {
+      font-size: 1.6em;
+    }
   }
 }
+
+// @media only screen and (max-width: 720px) {
+//   .NavbarComp {
+//     &__endNavBottom {
+//       display: flex;
+//       flex-direction: row;
+//     }
+//   }
+// }

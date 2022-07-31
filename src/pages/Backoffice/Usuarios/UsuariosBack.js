@@ -33,7 +33,13 @@ const UsuariosBack = () => {
         <header className="news-header">
           <h1>Listado de todos los usuarios</h1>
           <div className="btn-nuevo">
-            <Button onClick={() => navigate("/backoffice")}>Regresar</Button>
+            <Button
+              onClick={() => navigate("/backoffice")}
+              variant="tertiary"
+              size="sm"
+            >
+              Regresar
+            </Button>
           </div>
         </header>
         <Table striped bordered hover>

@@ -1,5 +1,5 @@
 //import useState hook to create menu collapse state
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 //import react pro sidebar components
 import {
@@ -30,9 +30,9 @@ import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   //create initial menuCollapse state using useState hook
-  const [menuCollapse, setMenuCollapse] = useState(false);
-  const navigate = useNavigate();
 
+  const [menuCollapse, setMenuCollapse] = useState(true);
+  const navigate = useNavigate();
   //create a custom function that will change menucollapse state from false to true and true to false
   const menuIconClick = () => {
     //condition checking to change state from true to false and vice versa
@@ -41,7 +41,7 @@ const Header = () => {
 
   return (
     <>
-      <div id="header">
+      <div id="header" className="responsHeader">
         {/* collapsed props to change menu size using menucollapse state */}
         <ProSidebar collapsed={menuCollapse}>
           <SidebarHeader>
@@ -50,7 +50,6 @@ const Header = () => {
               <p>{menuCollapse ? <AiFillDashboard /> : "Edición"}</p>
             </div>
             <div className="closemenu" onClick={menuIconClick}>
-              {/* changing menu collapse icon on click */}
               {menuCollapse ? <FiArrowRightCircle /> : <FiArrowLeftCircle />}
             </div>
           </SidebarHeader>

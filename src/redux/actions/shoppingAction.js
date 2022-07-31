@@ -8,6 +8,8 @@ import {
   PRODUCTS_SPECIAL,
   BANNER,
   LOADING,
+  ADD_TO_FAV,
+  REMOVE_ALL_FROM_FAV,
 } from "../types";
 import { getDataMethodPrivate } from "../../services/privateApiServices";
 
@@ -19,6 +21,14 @@ export const delFromCart = (id, all = false) =>
     : { type: REMOVE_ONE_FROM_CART, payload: id };
 
 export const clearCart = () => ({ type: CLEAR_CART });
+
+// export const delFromFav = (id) => ({ type: REMOVE_ALL_FROM_FAV, payload: id });
+
+// export const addToFav = (id) => ({ type: ADD_TO_FAV, payload: id });
+export const addToFav = (borrado, product) =>
+  !borrado.includes(product)
+    ? { type: ADD_TO_FAV, payload: product }
+    : { type: REMOVE_ALL_FROM_FAV, payload: product };
 
 export const productsAction = () => async (dispatch) => {
   try {

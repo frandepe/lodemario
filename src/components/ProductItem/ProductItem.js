@@ -2,20 +2,42 @@ import { useState } from "react";
 import { Card, Button, ButtonGroup } from "react-bootstrap";
 import "../Carousel/carousel.scss";
 import "./ProductItem.scss";
-// import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import { BsCartDash, BsCartPlus } from "react-icons/bs";
 import LazyLoad from "../../shared/LazyLoad";
+import showAlert from "../../shared/showAlert";
 
-const ProductItem = ({ data, addToCart, delOneFromCart }) => {
+const ProductItem = ({ data, addToCart, delOneFromCart, addToFav }) => {
+  const [isFavorite, setIsFavorite] = useState(false);
+  const isAuth = window.localStorage.getItem("token");
+
+  const handlePress = () => {
+    if (isAuth) {
+      addToFav(id);
+      setIsFavorite(!isFavorite);
+    } else {
+      return showAlert({
+        type: "info",
+        title: "Inicie sesion",
+        message: "Debe iniciar sesion para añadir productos a favoritos",
+      });
+    }
+  };
   let { id, name, price, imagen } = data;
   const [count, setCount] = useState(0);
-  // src="https://t2.ev.ltmcdn.com/es/posts/7/0/2/germinar_semillas_de_manzana_como_hacerlo_y_cuidados_2207_600.jpg"
   return (
     <div className="Carousel__item">
       <LazyLoad variant="top" src={imagen} width={246} height={222} />
       <Card.Body className="ProductItem__info">
         <Card.Title className="ProductItem__nombre">{name}</Card.Title>
 
+        <div className="ProductItem__fav" onClick={handlePress}>
+          {!isFavorite ? (
+            <MdFavoriteBorder />
+          ) : (
+            <MdFavorite className="ProductItem__favActive" />
+          )}
+        </div>
         <Card.Text className="ProductItem__precio">${price}.00</Card.Text>
         <div className="ProductItem__container--count">
           <Card.Text className="ProductItem__count--number">

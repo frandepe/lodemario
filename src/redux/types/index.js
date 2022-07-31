@@ -7,6 +7,7 @@ export const PRODUCTS = "PRODUCTS";
 export const PRODUCTS_CATEGORY = "PRODUCTS_CATEGORY";
 export const PRODUCTS_SPECIAL = "PRODUCTS_SPECIAL";
 export const ADD_TO_FAV = "ADD_TO_FAV";
+export const REMOVE_ALL_FROM_FAV = "REMOVE_ALL_FROM_FAV";
 
 // BANNER
 export const BANNER = "BANNER";

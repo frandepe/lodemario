@@ -11,7 +11,7 @@
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   background: rgba(255, 255, 255, 0.6);
-  width: 200px;
+  width: 250px;
   height: 150px;
   cursor: pointer;
   background-color: var(--primary);
@@ -67,5 +67,11 @@
 
 .dashboard_allContainer {
   height: 62vh;
-  margin-left: 220px;
+  margin-left: 75px;
+}
+
+@media only screen and (max-width: 720px) {
+  .dashboard_allContainer {
+    height: 100%;
+  }
 }

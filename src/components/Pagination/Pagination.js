@@ -17,7 +17,9 @@ const Pagination = ({
     setCurrentPage(currentPage + 1);
   };
   const previousPage = () => {
-    setCurrentPage(currentPage - 1);
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
   };
   // le podria poner un math max para q no se me desmadre si hay muchas paginas
   // arreglar: limites de paginas

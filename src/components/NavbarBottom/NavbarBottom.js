@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { BsCart4 } from "react-icons/bs";
 import { AiOutlineUser } from "react-icons/ai";
-import { Navbar, Container, Nav, Button } from "react-bootstrap";
+import { MdFavoriteBorder } from "react-icons/md";
+import { FaUserAltSlash } from "react-icons/fa";
+import { Navbar, Container, Nav, Dropdown } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import showAlert from "../../shared/showAlert";
 import Select from "../Select/Select";
+import Fav from "../../pages/Fav/Fav";
 
 const NavbarBottom = () => {
   const state = useSelector((state) => state);
@@ -13,8 +16,9 @@ const NavbarBottom = () => {
   const { cart } = state.shopping;
 
   const handleSessionClose = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem("cart");
     localStorage.removeItem("response");
+    localStorage.removeItem("token");
     showAlert({
       type: "success",
       title: "Sesión cerrada",
@@ -33,10 +37,30 @@ const NavbarBottom = () => {
       <Navbar bg="light" expand="lg">
         <Container>
           <Select />
-          <Nav className="justify-content-end">
+          <Nav className="justify-content-end NavbarComp__endNavBottom">
+            <Navbar.Brand className="NavbarComp__cart--container">
+              <Dropdown>
+                <Dropdown.Toggle
+                  variant="success"
+                  id="dropdown-basic"
+                  className="NavbarComp__cart--iconFav"
+                >
+                  <div>
+                    <MdFavoriteBorder />
+                  </div>
+                  <div>Favoritos</div>
+                </Dropdown.Toggle>
+                <Dropdown.Menu className="NavbarComp__cart--dropdown">
+                  <Fav />
+                </Dropdown.Menu>
+              </Dropdown>
+            </Navbar.Brand>
             <Navbar.Brand href="cart" className="NavbarComp__cart--container">
               <div className="NavbarComp__cart--icon">
-                <BsCart4 />
+                <div>
+                  <BsCart4 />
+                </div>
+                <div>Mi Compra</div>
               </div>
               <div className="NavbarComp__cart--length">{cart.length}</div>
             </Navbar.Brand>
@@ -46,19 +70,23 @@ const NavbarBottom = () => {
                 className="NavbarComp__cart--container"
               >
                 <div className="NavbarComp__cart--icon">
-                  <AiOutlineUser />
+                  <div>
+                    <AiOutlineUser />
+                  </div>
+                  <div>Registrarse</div>
                 </div>
-                <div className="NavbarComp__cart--register">Registrate</div>
+                {/* <div className="NavbarComp__cart--register">Registrate</div> */}
               </Navbar.Brand>
             ) : (
-              <Button
-                size="sm"
+              <div
                 onClick={handleSessionClose}
-                variant="secondary"
                 className="NavbarComp__btnClose"
               >
-                Cerrar Session
-              </Button>
+                <div>
+                  <FaUserAltSlash />
+                </div>
+                <div>Cerrar sesion</div>
+              </div>
             )}
           </Nav>
         </Container>

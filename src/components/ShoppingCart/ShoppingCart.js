@@ -23,7 +23,7 @@ import "../shared.scss";
 
 const ShoppingCart = () => {
   const [search, setSearch] = useState("");
-  const [sortedField, setSortedField] = useState(null);
+  const [sortedField, setSortedField] = useState("createdDate");
 
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
@@ -39,6 +39,8 @@ const ShoppingCart = () => {
     indexOfLastPost
   );
 
+  console.log(currentPosts);
+
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const handleChange = (e) => {
@@ -49,8 +51,14 @@ const ShoppingCart = () => {
     setSearch(e.target.value);
   };
 
+  useEffect(() => {
+    dispatch(categoryAction("quesos"));
+    dispatch(productsAction(products));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   if (sortedField !== null) {
-    category?.category?.sort((a, b) => {
+    currentPosts?.sort((a, b) => {
       if (a[sortedField] < b[sortedField]) {
         return -1;
       }
@@ -64,16 +72,6 @@ const ShoppingCart = () => {
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
-
-  useEffect(() => {
-    dispatch(productsAction(products));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    dispatch(categoryAction("quesos"));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <div>
@@ -227,6 +225,8 @@ const ShoppingCart = () => {
         postsPerPage={postsPerPage}
         totalPosts={category?.category?.length}
         paginate={paginate}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
       />
     </div>
   );

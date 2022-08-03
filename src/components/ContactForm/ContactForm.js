@@ -58,7 +58,7 @@ const ContactForm = () => {
           try {
             setLoading(true);
             const { data } = await axios.post(
-              `http://localhost:3100/api/email`,
+              `https://app-lodemario.herokuapp.com/api/email`,
               {
                 items: JSON.parse(shoppingCart),
                 email,

@@ -24,7 +24,6 @@ const Login = () => {
   const formSchema = yup.object().shape({
     firstName: yup
       .string()
-
       .matches(/^[A-Za-z ]*$/, "Por favor, ingrese un nombre válido"),
     lastName: yup
       .string()
@@ -37,20 +36,20 @@ const Login = () => {
         /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
         "Escriba un correo válido"
       )
-      .max(50, "El email es demasiado largo"),
+      .max(70, "El email es demasiado largo"),
     password: yup
       .string()
       .required("Por favor, ingrese su contraseña")
-      .max(50, "La contraseña es demasiado larga"),
+      .max(70, "La contraseña es demasiado larga"),
   });
-
+  console.log(error);
   return (
     <div className="Login__container">
       <div className="Login__container-h1"></div>
       <div className="Login__container-login">
         <div className="Login__container-signin">
           <h2>
-            {isRegistrando ? "Registro" : "Entrar"}{" "}
+            {isRegistrando ? "Registro" : "Ingresar"}{" "}
             <i className="fas fa-user"></i>{" "}
           </h2>
         </div>
@@ -88,7 +87,11 @@ const Login = () => {
                   onBlur={handleBlur}
                 />
                 <label htmlFor="email">Email</label>
-                <ErrorMessage name="email" component="p" />
+                <ErrorMessage
+                  className="Login__errorsEmail"
+                  name="email"
+                  component="p"
+                />
               </Form.Floating>
               <Form.Floating className="mb-3">
                 <Form.Control
@@ -101,7 +104,11 @@ const Login = () => {
                   onBlur={handleBlur}
                 />
                 <label htmlFor="password">Contraseña</label>
-                <ErrorMessage name="password" component="p" />
+                <ErrorMessage
+                  className="Login__errorsEmail"
+                  name="password"
+                  component="p"
+                />
               </Form.Floating>
               {isRegistrando && (
                 <Form.Floating className="mb-3">
@@ -116,7 +123,11 @@ const Login = () => {
                   />
                   <label htmlFor="firstName">Nombre</label>
 
-                  <ErrorMessage name="firstName" component="p" />
+                  <ErrorMessage
+                    className="Login__errorsEmail"
+                    name="firstName"
+                    component="p"
+                  />
                 </Form.Floating>
               )}
               {isRegistrando && (
@@ -131,7 +142,11 @@ const Login = () => {
                     onBlur={handleBlur}
                   />
                   <label htmlFor="name">Apellido</label>
-                  <ErrorMessage name="lastName" component="p" />
+                  <ErrorMessage
+                    className="Login__errorsEmail"
+                    name="lastName"
+                    component="p"
+                  />
                 </Form.Floating>
               )}
               <p
@@ -143,12 +158,16 @@ const Login = () => {
                   : "Aún no tenés una cuenta? Registrate"}
               </p>
               <Button className="Login__btn" type="submit" variant="secondary">
-                {isRegistrando ? "Crear cuenta" : "Entrar"}
+                {isRegistrando ? "Crear cuenta" : "Iniciar sesión"}
               </Button>
             </Form>
           )}
         </Formik>
-        {error && <div className="Login__error-check">{error.message}</div>}
+        {error && (
+          <div className="Login__error-check">
+            {error && "usuario y/o contraseña incorrecto"}
+          </div>
+        )}
       </div>
     </div>
   );

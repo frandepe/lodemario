@@ -21,13 +21,13 @@ const Contacto = () => {
       <Container>
         <div className="Contacto__titulo">
           <p>
-            Completa el siguiente formulario para ponernos en contacto y
+            Completá el siguiente formulario para ponernos en contacto y poder
             coordinar la compra
           </p>
           <p>
             Al presionar en "Enviar compra", estarás enviandonos los productos
             de tu <Link to="/cart">carrito de compra</Link>, junto con los datos
-            del formulario
+            del formulario.
           </p>
         </div>
         <Row>

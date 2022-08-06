@@ -110,9 +110,16 @@ const Cart = () => {
             <Col>${total}.00</Col>
           </Row>
           {/* <button onClick={() => dispatch(clearCart())}>Limpiar Carrito</button> */}
-          <Button variant="secondary" onClick={handleBtnCompra}>
+          <Button
+            variant="secondary"
+            onClick={handleBtnCompra}
+            className="Cart__button--compra"
+          >
             COMPRAR
           </Button>
+          <Row className="Cart__total">
+            <Col>Monto mínimo de compra ARS $2000</Col>
+          </Row>
         </Col>
       </Row>
       <Row className="Cart__continuarCompra">

@@ -221,13 +221,15 @@ const ShoppingCart = () => {
           )}
         </div>
       </div>
-      <Pagination
-        postsPerPage={postsPerPage}
-        totalPosts={category?.category?.length}
-        paginate={paginate}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-      />
+      <div className="ShoppingCart__pagination-bottom">
+        <Pagination
+          postsPerPage={postsPerPage}
+          totalPosts={category?.category?.length}
+          paginate={paginate}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      </div>
     </div>
   );
 };

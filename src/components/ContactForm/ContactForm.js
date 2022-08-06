@@ -203,6 +203,9 @@ const ContactForm = () => {
                     Quiero retirar mi compra por el local
                   </option>
                 </Form.Select>
+                {values.selectEnvio ===
+                  "Quiero recibir la compra a domicilio" &&
+                  "Recordá que la opción de compra a domicilio tiene un pequeño costo de envío"}
                 <ErrorMessage
                   name="selectEnvio"
                   component="p"

@@ -26,10 +26,7 @@ const Footer = () => {
             <AiFillCreditCard />
           </Col>
           <Col className="footer__redes" sm={5}>
-            <a href="www.facebook.com">
-              <AiFillFacebook />
-            </a>
-            <a href="www.instagram.com">
+            <a href="https://www.instagram.com/queserialodemario22/">
               <AiFillInstagram />
             </a>
           </Col>

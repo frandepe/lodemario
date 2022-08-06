@@ -24,7 +24,10 @@
   &__search {
     border-radius: 20px;
     margin-top: 20px;
-    width: 374px;
+  }
+
+  &__search input {
+    width: 350px;
   }
   &__titleProductos {
     border-bottom: 1px solid var(--fourth);
@@ -49,6 +52,9 @@
   &__sortable {
     display: flex;
     align-items: center;
+  }
+  &__pagination-bottom {
+    margin-top: 25px;
   }
 }
 

@@ -14,8 +14,8 @@ const NavbarBottom = () => {
   const user = localStorage.getItem("token");
   const [conect, setConect] = useState(user);
   const { cart } = state.shopping;
-  const isAuth = window.localStorage.getItem("response");
-  const res = JSON.parse(isAuth);
+  // const isAuth = window.localStorage.getItem("response");
+  // const res = JSON.parse(isAuth);
 
   const handleSessionClose = () => {
     localStorage.removeItem("cart");
@@ -52,7 +52,10 @@ const NavbarBottom = () => {
                   </div>
                   <div>Favoritos</div>
                 </Dropdown.Toggle>
-                <Dropdown.Menu className="NavbarComp__cart--dropdown">
+                <Dropdown.Menu
+                  className="NavbarComp__cart--dropdown"
+                  style={{ position: "absolute" }}
+                >
                   <Fav />
                 </Dropdown.Menu>
               </Dropdown>
@@ -87,7 +90,7 @@ const NavbarBottom = () => {
                 <div>
                   <FaUserAltSlash />
                 </div>
-                <div>{res.email}</div>
+                <div>Cerrar sesion</div>
               </div>
             )}
           </Nav>

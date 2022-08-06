@@ -10,6 +10,7 @@ const Select = () => {
 
   const handleChange = (e) => {
     dispatch(categoryAction(e.target.value));
+    window.scrollTo(0, 1300);
   };
 
   return (

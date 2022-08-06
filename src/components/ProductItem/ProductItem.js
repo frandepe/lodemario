@@ -45,17 +45,19 @@ const ProductItem = ({ data, addToCart, delOneFromCart, addToFav }) => {
           </Card.Text>
         </div>
         <ButtonGroup aria-label="Basic example">
-          <Button
-            className="ProductItem__button--dash"
-            variant="secondary"
-            onClick={() => delOneFromCart(id) && setCount(count - 1)}
-          >
-            <BsCartDash
-              style={{
-                transform: "translate(0px, -2px)",
-              }}
-            />
-          </Button>
+          {count > 0 && (
+            <Button
+              className="ProductItem__button--dash"
+              variant="secondary"
+              onClick={() => delOneFromCart(id) && setCount(count - 1)}
+            >
+              <BsCartDash
+                style={{
+                  transform: "translate(0px, -2px)",
+                }}
+              />
+            </Button>
+          )}
           <Button
             className="ProductItem__button--add"
             onClick={() => addToCart(id) && setCount(count + 1)}

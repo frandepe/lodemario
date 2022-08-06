@@ -44,7 +44,7 @@ const BannerBack = () => {
   return (
     <div>
       <HeaderBack />
-      <section className="container_section">
+      <section className="container_section container_section_banner">
         <header className="news-header">
           <h1>Banner del inicio</h1>
           <div className="btn-group btn_groups">

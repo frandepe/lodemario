@@ -1,5 +1,5 @@
 //import useState hook to create menu collapse state
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 //import react pro sidebar components
 import {
@@ -84,7 +84,9 @@ const Header = () => {
           </SidebarContent>
           <SidebarFooter>
             <Menu iconShape="square">
-              <MenuItem icon={<FiLogOut />}>Cerrar sesión</MenuItem>
+              <MenuItem icon={<FiLogOut />} onClick={() => navigate("/")}>
+                Web
+              </MenuItem>
             </Menu>
           </SidebarFooter>
         </ProSidebar>

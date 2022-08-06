@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 import HeaderBack from "../HeaderBack/HeaderBack";
 import "../sharedBack.scss";
 import Pagination from "../../../components/Pagination/Pagination";
+import Swal from "sweetalert2";
 
 const Productos = () => {
   const dispatch = useDispatch();
@@ -26,11 +27,27 @@ const Productos = () => {
 
   const navigate = useNavigate();
 
-  async function handleRemove(id) {
+  function handleRemove(id) {
     try {
-      await privateDeleteRequest(`products/${id}`);
-      showAlert({ type: "success", title: "Eliminado correctamente" });
-      setDeleted(true);
+      Swal.fire({
+        title: "Eliminar producto?",
+        showDenyButton: true,
+        confirmButtonText: "Si",
+        denyButtonText: "No",
+        customClass: {
+          actions: "my-actions",
+          confirmButton: "order-2",
+          denyButton: "order-3",
+        },
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire("Eliminado correctamente", "", "success");
+          privateDeleteRequest(`products/${id}`);
+          setDeleted(true);
+        } else if (result.isDenied) {
+          setDeleted(false);
+        }
+      });
     } catch (error) {
       showAlert({
         type: "error",
@@ -87,7 +104,10 @@ const Productos = () => {
           </div>
         </header>
         <div className="container_filters">
-          <InputGroup className="mb-3 ShoppingCart__search">
+          <InputGroup
+            className="mb-3 ShoppingCart__search"
+            style={{ marginLeft: "60px" }}
+          >
             <InputGroup.Text id="basic-addon1">
               <BsSearch />
             </InputGroup.Text>

@@ -14,6 +14,8 @@ const NavbarBottom = () => {
   const user = localStorage.getItem("token");
   const [conect, setConect] = useState(user);
   const { cart } = state.shopping;
+  const isAuth = window.localStorage.getItem("response");
+  const res = JSON.parse(isAuth);
 
   const handleSessionClose = () => {
     localStorage.removeItem("cart");
@@ -85,7 +87,7 @@ const NavbarBottom = () => {
                 <div>
                   <FaUserAltSlash />
                 </div>
-                <div>Cerrar sesion</div>
+                <div>{res.email}</div>
               </div>
             )}
           </Nav>

@@ -117,4 +117,24 @@
   .container_filters {
     flex-direction: column;
   }
+  .news-header {
+    flex-direction: column;
+  }
+  .change-button-delete {
+    width: 40px;
+    height: 40px;
+  }
+  .change-button-edit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+  }
+  .options svg {
+    font-size: 1.5em;
+  }
+  .container_section_banner {
+    height: 80vh;
+  }
 }

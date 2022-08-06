@@ -12,6 +12,7 @@ const ProductosForm = (patchData) => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const [loading, setLoading] = useState(false);
   const [previewImage, setPreviewImage] = useState(
     () => patchData?.location?.state?.imagen || null
   );
@@ -73,6 +74,7 @@ const ProductosForm = (patchData) => {
           onSubmit={async ({ ...formData }) => {
             setStatusForm(true);
             try {
+              setLoading(true);
               if (location?.state?.element?.id) {
                 await privatePutRequest({
                   url: `products/${location?.state?.element?.id}`,
@@ -81,6 +83,7 @@ const ProductosForm = (patchData) => {
 
                 showAlert({ type: "success", title: "Editado correctamente" });
                 navigate("/backoffice/productos");
+                setLoading(false);
                 return;
               }
               await privatePostRequest("products", {
@@ -95,7 +98,9 @@ const ProductosForm = (patchData) => {
                   ? "Editado correctamente"
                   : "Creado correctamente",
               }) && navigate("/backoffice/productos");
+              setLoading(false);
             } catch (err) {
+              setLoading(false);
               console.log("Error catch:", err);
             } finally {
               setStatusForm(false);
@@ -198,7 +203,13 @@ const ProductosForm = (patchData) => {
 
               <div className="btn-nuevo">
                 <Button type="submit" disabled={statusForm}>
-                  {location?.state?.element?.id ? "Editar" : "Crear"}
+                  {location?.state?.element?.id
+                    ? loading
+                      ? "Editando..."
+                      : "Editar"
+                    : loading
+                    ? "Creando..."
+                    : "Crear"}
                 </Button>
               </div>
             </form>

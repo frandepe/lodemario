@@ -198,27 +198,21 @@ const ShoppingCart = () => {
           ))}
         </Form>
         <div className="ShoppingCart__container--products">
-          {!loading ? (
-            currentPosts
-              ?.filter((element) => {
-                return element.name
-                  .toLowerCase()
-                  .includes(search.toLowerCase());
-              })
-              .map((product) => (
-                <ProductItem
-                  key={product.id}
-                  data={product}
-                  addToFav={() => {
-                    dispatch(addToFav(fav, product));
-                  }}
-                  addToCart={() => dispatch(addToCart(product.id))}
-                  delOneFromCart={() => dispatch(delFromCart(product.id))}
-                />
-              ))
-          ) : (
-            <Spiner />
-          )}
+          {currentPosts
+            ?.filter((element) => {
+              return element.name.toLowerCase().includes(search.toLowerCase());
+            })
+            .map((product) => (
+              <ProductItem
+                key={product.id}
+                data={product}
+                addToFav={() => {
+                  dispatch(addToFav(fav, product));
+                }}
+                addToCart={() => dispatch(addToCart(product.id))}
+                delOneFromCart={() => dispatch(delFromCart(product.id))}
+              />
+            ))}
         </div>
       </div>
       <div className="ShoppingCart__pagination-bottom">

@@ -14,7 +14,7 @@ const ProductosForm = (patchData) => {
 
   const [loading, setLoading] = useState(false);
   const [previewImage, setPreviewImage] = useState(
-    () => patchData?.location?.state?.imagen || null
+    () => location?.state?.element?.imagen?.url || null
   );
 
   // const SUPPORTED_FORMATS = /(jpg|png|jpeg)/;
@@ -26,7 +26,7 @@ const ProductosForm = (patchData) => {
       reader.onerror = (error) => reject(error);
     });
   }
-
+  console.log(location?.state?.element);
   const [statusForm, setStatusForm] = useState(false);
 
   const formSchema = yup.object().shape({
@@ -146,7 +146,7 @@ const ProductosForm = (patchData) => {
             setFieldTouched,
           }) => (
             <form className="form_inputs" onSubmit={handleSubmit}>
-              {setPreviewImage(values.imagen)}
+              {setPreviewImage(values.imagen?.url || values.imagen)}
               <Form.Label htmlFor="name">Nombre</Form.Label>
               <Form.Control
                 placeholder="Nombre del producto"

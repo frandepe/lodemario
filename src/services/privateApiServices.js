@@ -7,6 +7,7 @@ const tokenn = window.localStorage.getItem("token");
 const config = {
   headers: {
     Authorization: `Bearer ${tokenn}`,
+    "x-access-token": `${tokenn}`,
     "Access-Control-Expose-Headers": "Access-Control-*",
     "Access-Control-Allow-Headers":
       "Access-Control-*, Origin, X-Requested-With, Content-Type, Accept",
@@ -57,7 +58,7 @@ export const privatePutRequest = async ({ url, putData }) => {
 
 export const privateDeleteRequest = async (route) => {
   try {
-    const { res } = await axios.delete(`${BASE_URL}/${route}`, {}, config);
+    const { res } = await axios.delete(`${BASE_URL}/${route}`, config);
     return res;
   } catch (err) {
     console.log(err);

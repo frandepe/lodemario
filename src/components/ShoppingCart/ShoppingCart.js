@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { BsSearch } from "react-icons/bs";
-import Spiner from "../../shared/spiner";
 import {
   addToCart,
   productsAction,
@@ -27,7 +26,7 @@ const ShoppingCart = () => {
 
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
-  const { cart, products, category, loading, fav } = state.shopping;
+  const { cart, products, category, fav } = state.shopping;
 
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(9);

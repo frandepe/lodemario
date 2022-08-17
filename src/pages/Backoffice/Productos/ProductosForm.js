@@ -17,7 +17,6 @@ const ProductosForm = (patchData) => {
     () => location?.state?.element?.imagen?.url || null
   );
 
-  // const SUPPORTED_FORMATS = /(jpg|png|jpeg)/;
   function getBase64(file) {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -39,44 +38,12 @@ const ProductosForm = (patchData) => {
       .required("El campo es requerido")
       .max(50, "No puede ingresar más de 50 caracteres"),
     price: yup.number().required("El campo es requerido"),
-    imagen: yup.lazy((value) =>
-      /^data/.test(value)
-        ? yup
-            .string()
-            .trim()
-            .matches(
-              /^data:image\/(?:jpg|png|jpeg)(?:;charset=utf-8)?;base64,(?:[A-Za-z0-9]|[+/])+={0,2}/g,
-              "Solo admite archivos con formato imagen jpg|png|jpeg"
-            )
-            .required()
-        : yup.string().trim().url("La URL es invalida").required()
-    ),
-    // imagen: yup
-    //   .mixed()
-    //   .required("La imagen es requerida")
-    //   .matches(
-    //     /^data:image\/(?:gif|png|jpeg|bmp|webp)(?:;charset=utf-8)?;base64,(?:[A-Za-z0-9]|[+/])+={0,2}/g,
-    //     "Must be a valid data URI"
-    //   ),
-    // .test("fileType", "El formato no es correcto", (imagen) => {
-    //   console.log(imagen);
-    //   if (!SUPPORTED_FORMATS.test(imagen)) return false;
-    //   setPreviewImage(imagen);
-    //   return true;
-    // }),
-    // imagen: yup
-    //   .mixed()
-    //   .required("El campo es requerido")
-    //   .test(
-    //     "FILE_SIZE",
-    //     "La imagen es demasiado grande",
-    //     (value) => value && value.size < 1024 * 1024
-    //   )
-    //   .test(
-    //     "FILE_TYPE",
-    //     "Invalido",
-    //     (value) => value && ["image/png", "image/jpg"].includes(value.type)
-    //   ),
+    imagen: yup
+      .string()
+      .matches(
+        /^data:image\/(?:jpg|png|jpeg|)(?:;charset=utf-8)?;base64,(?:[A-Za-z0-9]|[+/])+={0,2}/g,
+        "Solo admite archivos con formato imagen jpg, png o jpeg"
+      ),
   });
 
   return (

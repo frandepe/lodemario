@@ -62,7 +62,7 @@ const UsuariosBack = () => {
                     <td className="title">{element.firstName}</td>
                     <td>{element.lastName}</td>
                     <td>{element.email}</td>
-                    <td>{element.rol}</td>
+                    <td>{element?.roles[0]?.name}</td>
                     <td>{element.createdDate}</td>
                   </tr>
                 );

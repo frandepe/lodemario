@@ -179,7 +179,7 @@ const Productos = () => {
                   return (
                     <tr key={element.id}>
                       <td className="img-backoffice">
-                        <img src={element.imagen.url} alt="imgb" />
+                        <img src={element?.imagen?.url} alt="imgb" />
                       </td>
                       <td className="title">{element.name}</td>
                       <td>${element.price}</td>

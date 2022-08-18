@@ -27,6 +27,10 @@
   &__count:active {
     color: var(--primary);
   }
+  &__nombre {
+    text-align: center;
+    height: 50px;
+  }
   &__nombre:first-letter {
     text-transform: uppercase;
   }
@@ -36,6 +40,8 @@
   &__precio {
     font-weight: bold;
     color: var(--primary);
+    margin: 0;
+    padding: 0;
   }
   &__button {
     &--add {
@@ -45,7 +51,7 @@
   &__fav {
     -webkit-transform: translate(185px, -265px);
     -moz-transform: translate(185px, -265px);
-    transform: translate(185px, -265px);
+    transform: translate(185px, -290px);
     width: 40px;
     height: 40px;
     display: flex;

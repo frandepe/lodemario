@@ -38,12 +38,12 @@ const ProductosForm = (patchData) => {
       .required("El campo es requerido")
       .max(50, "No puede ingresar más de 50 caracteres"),
     price: yup.number().required("El campo es requerido"),
-    imagen: yup
-      .string()
-      .matches(
-        /^data:image\/(?:jpg|png|jpeg|)(?:;charset=utf-8)?;base64,(?:[A-Za-z0-9]|[+/])+={0,2}/g,
-        "Solo admite archivos con formato imagen jpg, png o jpeg"
-      ),
+    // imagen: yup
+    //   .string()
+    //   .matches(
+    //     /^data:image\/(?:jpg|png|jpeg|)(?:;charset=utf-8)?;base64,(?:[A-Za-z0-9]|[+/])+={0,2}/g,
+    //     "Solo admite archivos con formato imagen jpg, png o jpeg"
+    //   ),
   });
 
   return (

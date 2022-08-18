@@ -21,7 +21,7 @@ const CartItem = ({ data, delOneFromCart, delAllFromCart, addToCart }) => {
       <Card.Body className="CartItem__container">
         <Row>
           <Col className="CartItem__container--imgTitle">
-            <Card.Img variant="top" src={imagen.url} />
+            <Card.Img variant="top" src={imagen?.url} />
             <p>{name}</p>
           </Col>
           <Col className="CartItem__flex">

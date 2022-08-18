@@ -28,7 +28,7 @@ const FavItem = ({
       <Card.Body className="CartItem__container">
         <Row>
           <Col>
-            <Card.Img variant="top" src={imagen.url} />
+            <Card.Img variant="top" src={imagen?.url} />
           </Col>
           <Col>
             <b>{name}</b>

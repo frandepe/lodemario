@@ -27,7 +27,7 @@ const ProductItem = ({ data, addToCart, delOneFromCart, addToFav }) => {
   const [count, setCount] = useState(0);
   return (
     <div className="Carousel__item">
-      <LazyLoad variant="top" src={imagen.url} width={246} height={222} />
+      <LazyLoad variant="top" src={imagen?.url} width={246} height={222} />
       <Card.Body className="ProductItem__info">
         <Card.Title className="ProductItem__nombre">{name}</Card.Title>
 

@@ -16,7 +16,6 @@ const ProductosForm = (patchData) => {
   const [previewImage, setPreviewImage] = useState(
     () => location?.state?.element?.imagen?.url || null
   );
-
   function getBase64(file) {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -25,7 +24,6 @@ const ProductosForm = (patchData) => {
       reader.onerror = (error) => reject(error);
     });
   }
-  console.log(location?.state?.element);
   const [statusForm, setStatusForm] = useState(false);
 
   const formSchema = yup.object().shape({
@@ -38,12 +36,21 @@ const ProductosForm = (patchData) => {
       .required("El campo es requerido")
       .max(50, "No puede ingresar más de 50 caracteres"),
     price: yup.number().required("El campo es requerido"),
-    // imagen: yup
-    //   .string()
-    //   .matches(
-    //     /^data:image\/(?:jpg|png|jpeg|)(?:;charset=utf-8)?;base64,(?:[A-Za-z0-9]|[+/])+={0,2}/g,
-    //     "Solo admite archivos con formato imagen jpg, png o jpeg"
-    //   ),
+    imagen: yup.lazy((value) => {
+      switch (typeof value) {
+        case "object":
+          return yup.object();
+        case "string":
+          return yup
+            .string()
+            .matches(
+              /^data:image\/(?:jpg|png|jpeg|)(?:;charset=utf-8)?;base64,(?:[A-Za-z0-9]|[+/])+={0,2}/g,
+              "Solo admite archivos con formato imagen jpg, png o jpeg"
+            );
+        default:
+          return yup.mixed(); // here you can decide what is the default
+      }
+    }),
   });
 
   return (
@@ -61,7 +68,6 @@ const ProductosForm = (patchData) => {
 
         <Formik
           initialValues={{
-            // id: patchData?.location?.state?.id || "",
             name: location?.state?.element?.name || "",
             category: location?.state?.element?.category || "",
             price: location?.state?.element?.price || "",
@@ -87,8 +93,6 @@ const ProductosForm = (patchData) => {
                 ...formData,
               });
 
-              // if (!response?.data?.status === 200)
-              //   throw new Error("Algo falló");
               showAlert({
                 type: "success",
                 title: patchData?.location?.state?.id

@@ -45,7 +45,7 @@ export const privatePutRequest = async ({ url, putData }) => {
     const res = await axios.put(`${BASE_URL}/${url}`, putData, config);
     return res;
   } catch (err) {
-    console.log(err);
+    console.log(err.message);
   }
 };
 
